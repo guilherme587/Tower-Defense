@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://sprites/torre_canhao.png" type="Texture" id=1]
+[ext_resource path="res://GUI/towers_panel/scripts/tower_1_panel.gd" type="Script" id=2]
+[ext_resource path="res://cenas/tower_0_turret.tscn" type="PackedScene" id=3]
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 5 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="tower_1_panel" type="ColorRect"]
+anchor_right = 0.078
+anchor_bottom = 0.133
+margin_right = 0.127998
+margin_bottom = 0.199997
+rect_min_size = Vector2( 80, 80 )
+color = Color( 0.317647, 0.603922, 0.341176, 1 )
+script = ExtResource( 2 )
+tower = ExtResource( 3 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 40, 40 )
+rotation = 3.14159
+frames = SubResource( 2 )
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
+position = Vector2( 40, 54 )
+rotation = 3.14159
+frames = SubResource( 6 )
+
+[connection signal="gui_input" from="." to="." method="_on_tower_1_panel_gui_input"]

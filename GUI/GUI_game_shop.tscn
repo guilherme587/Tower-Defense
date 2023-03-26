@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://GUI/towers_panel/tower_1_panel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://GUI/fontes/pixelart.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://cenas/tower_1_turret.tscn" type="PackedScene" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 2 )
+
+[node name="GUI_game_shop" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color( 0.780392, 0.984314, 0.631373, 1 )
+anchor_top = 0.785
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 254.0
+margin_bottom = 245.0
+rect_scale = Vector2( 0.997888, -1.07627 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -90.0
+margin_top = -40.0
+margin_right = 90.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 80, 80 )
+custom_constants/separation = 20
+
+[node name="tower_1_panel" parent="ColorRect/HBoxContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 80.0
+margin_bottom = 80.0
+
+[node name="tower_1_panel2" parent="ColorRect/HBoxContainer" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 100.0
+margin_right = 180.0
+margin_bottom = 80.0
+tower = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.902
+anchor_top = 0.027
+anchor_right = 0.984
+anchor_bottom = 0.073
+margin_left = 0.351929
+margin_top = -0.200001
+margin_right = 0.383972
+margin_bottom = 0.199997
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = -5
+custom_constants/shadow_offset_y = 5
+custom_fonts/font = SubResource( 1 )
+text = "000R$"
+
+[node name="Button" type="Button" parent="."]
+margin_left = 472.0
+margin_top = 560.0
+margin_right = 512.0
+margin_bottom = 590.0
+rect_min_size = Vector2( 40, 30 )
+custom_fonts/font = SubResource( 2 )
+text = "UP"
+
+[connection signal="pressed" from="Button" to="ColorRect/HBoxContainer/tower_1_panel" method="_on_Button_pressed"]
